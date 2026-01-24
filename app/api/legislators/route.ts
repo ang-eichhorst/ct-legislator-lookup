@@ -1,3 +1,7 @@
+// ============================================================================
+// FILE: app/api/legislators/route.ts
+// COMPLETE VERSION WITH CUSTOM DATA INTEGRATION
+// ============================================================================
 import { NextRequest, NextResponse } from 'next/server';
 const Geocodio = require('geocodio-library-node');
 const Papa = require('papaparse');
@@ -125,6 +129,17 @@ export async function GET(request: NextRequest) {
     const fields = result.fields;
     const matchedAddress = result.formatted_address;
 
+    // Check if address is in Connecticut
+    const addressComponents = result.address_components;
+    const state = addressComponents.state;
+    
+    if (state !== 'CT' && state !== 'Connecticut') {
+      return NextResponse.json(
+        { error: 'This address is not in Connecticut. Please enter a Connecticut address.' },
+        { status: 400 }
+      );
+    }
+
     // Check if we have state legislative data
     if (!fields?.state_legislative_districts) {
       return NextResponse.json(
@@ -137,7 +152,7 @@ export async function GET(request: NextRequest) {
 
     // Get custom data
     const customData = await getCustomData();
-    console.log('Custom data loaded, rows:', customData.length);
+    console.log('Custom data loaded, rows:', customData?.length || 0);
 
     // Extract legislators from the nested structure
     const extractedLegislators: any = {
@@ -160,14 +175,16 @@ export async function GET(request: NextRequest) {
             };
 
             // Merge custom data if available
-            const customMatch = matchCustomData(legislatorData, customData);
-            if (customMatch) {
-              legislatorData.custom = {
-                image_url: customMatch.Image,
-                profile_link: customMatch.Link,
-                name: customMatch.Name
-              };
-              console.log('Added custom data to House legislator:', legislatorData.custom);
+            if (customData && customData.length > 0) {
+              const customMatch = matchCustomData(legislatorData, customData);
+              if (customMatch) {
+                legislatorData.custom = {
+                  image_url: customMatch.Image,
+                  profile_link: customMatch.Link,
+                  name: customMatch.Name
+                };
+                console.log('Added custom data to House legislator:', legislatorData.custom);
+              }
             }
 
             extractedLegislators.house.push(legislatorData);
@@ -191,14 +208,16 @@ export async function GET(request: NextRequest) {
             };
 
             // Merge custom data if available
-            const customMatch = matchCustomData(legislatorData, customData);
-            if (customMatch) {
-              legislatorData.custom = {
-                image_url: customMatch.Image,
-                profile_link: customMatch.Link,
-                name: customMatch.Name
-              };
-              console.log('Added custom data to Senate legislator:', legislatorData.custom);
+            if (customData && customData.length > 0) {
+              const customMatch = matchCustomData(legislatorData, customData);
+              if (customMatch) {
+                legislatorData.custom = {
+                  image_url: customMatch.Image,
+                  profile_link: customMatch.Link,
+                  name: customMatch.Name
+                };
+                console.log('Added custom data to Senate legislator:', legislatorData.custom);
+              }
             }
 
             extractedLegislators.senate.push(legislatorData);
