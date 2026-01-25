@@ -91,12 +91,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen bg-white p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-lg shadow-xl p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <MapPin className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-800">
+        <div className="bg-white p-8">
+          <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
+            <MapPin className="w-8 h-8 text-gray-900" />
+            <h1 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
               Connecticut Legislator Lookup
             </h1>
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
               <button
                 onClick={lookupLegislators}
                 disabled={loading}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+                className="px-6 py-3 bg-gray-900 text-white font-semibold hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
               >
                 <Search className="w-5 h-5" />
                 {loading ? 'Searching...' : 'Search'}
@@ -126,23 +126,23 @@ export default function Home() {
           </div>
 
           {matchedAddress && (
-            <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-lg mb-6">
-              <p className="text-sm">
+            <div className="bg-gray-50 border-l-4 border-gray-900 px-4 py-3 mb-6">
+              <p className="text-sm text-gray-700">
                 <span className="font-semibold">Matched Address:</span> {matchedAddress}
               </p>
             </div>
           )}
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 flex items-start gap-2">
-              <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-              <span>{error}</span>
+            <div className="bg-red-50 border-l-4 border-red-600 px-4 py-3 mb-6 flex items-start gap-2">
+              <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-600" />
+              <span className="text-red-700">{error}</span>
             </div>
           )}
 
           {allLegislators.length > 0 && (
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Georgia, serif' }}>
                 Your Legislators ({allLegislators.length})
               </h2>
               
@@ -158,7 +158,7 @@ export default function Home() {
                   return (
                     <div
                       key={index}
-                      className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                      className="border-2 border-gray-200 p-6 hover:border-gray-900 transition-colors"
                     >
                       <div className="mb-4">
                         <div className="flex gap-4">
@@ -172,21 +172,21 @@ export default function Home() {
                           <div className="flex-1">
                             <div className="flex items-start justify-between mb-2">
                               <div className="flex-1">
-                                <h3 className="text-xl font-semibold text-gray-900">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-1" style={{ fontFamily: 'Georgia, serif' }}>
                                   {fullName}
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-700 font-medium">
                                   {party} • State {chamber}
                                 </p>
                                 {leg.district?.name && (
-                                  <p className="text-sm text-gray-500">
+                                  <p className="text-sm text-gray-600 mt-1">
                                     {leg.district.name}
                                   </p>
                                 )}
                               </div>
                               <div className="flex flex-col items-end gap-2">
                                 {leg.district?.district_number && (
-                                  <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                                  <span className="inline-block px-3 py-1 bg-gray-900 text-white text-sm font-bold">
                                     District {leg.district.district_number}
                                   </span>
                                 )}
@@ -198,13 +198,13 @@ export default function Home() {
 
                       <div className="space-y-2">
                         {leg.custom?.profile_link && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <ExternalLink className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                          <div className="flex items-center gap-2 text-gray-900">
+                            <ExternalLink className="w-4 h-4 text-gray-900 flex-shrink-0" />
                             <a
                               href={leg.custom.profile_link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hover:text-blue-600 hover:underline font-semibold"
+                              className="hover:underline font-bold"
                             >
                               View Profile
                             </a>
@@ -213,10 +213,10 @@ export default function Home() {
 
                         {leg.contact?.email && (
                           <div className="flex items-center gap-2 text-gray-700">
-                            <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                            <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
                             <a
                               href={`mailto:${leg.contact.email}`}
-                              className="hover:text-blue-600 hover:underline break-all text-sm"
+                              className="hover:underline break-all text-sm"
                             >
                               {leg.contact.email}
                             </a>
@@ -225,12 +225,12 @@ export default function Home() {
 
                         {leg.contact?.contact_form && (
                           <div className="flex items-center gap-2 text-gray-700">
-                            <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                            <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
                             <a
                               href={leg.contact.contact_form}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hover:text-blue-600 hover:underline text-sm"
+                              className="hover:underline text-sm"
                             >
                               Contact Form
                             </a>
@@ -239,10 +239,10 @@ export default function Home() {
 
                         {leg.contact?.phone && (
                           <div className="flex items-center gap-2 text-gray-700">
-                            <Phone className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                            <Phone className="w-4 h-4 text-gray-700 flex-shrink-0" />
                             <a
                               href={`tel:${leg.contact.phone}`}
-                              className="hover:text-blue-600 hover:underline text-sm"
+                              className="hover:underline text-sm"
                             >
                               {leg.contact.phone}
                             </a>
@@ -251,12 +251,12 @@ export default function Home() {
 
                         {leg.contact?.url && !leg.custom?.profile_link && (
                           <div className="flex items-center gap-2 text-gray-700">
-                            <ExternalLink className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                            <ExternalLink className="w-4 h-4 text-gray-700 flex-shrink-0" />
                             <a
                               href={leg.contact.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hover:text-blue-600 hover:underline text-sm"
+                              className="hover:underline text-sm"
                             >
                               Official Website
                             </a>
