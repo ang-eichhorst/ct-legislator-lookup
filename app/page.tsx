@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Mail, Phone, ExternalLink, AlertCircle, Building } from 'lucide-react';
 
 interface StateLegislator {
@@ -111,9 +111,9 @@ export default function Home() {
         <div className="bg-white p-8">
           <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
             <MapPin className="w-8 h-8 text-gray-900" />
-            <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
-              Find My Legislators 
-            </h2>
+            <h1 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+              Find Your Lawmakers
+            </h1>
           </div>
 
           <div className="mb-8">
