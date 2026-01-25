@@ -136,7 +136,7 @@ export default function Home() {
               </button>
             </div>
             <p className="mt-2 text-sm text-gray-600">
-              Example: 1049 Asylum Avenue, Hartford, CT 06105
+              Example: 210 Capitol Avenue, Hartford, CT 06106
             </p>
           </div>
 
