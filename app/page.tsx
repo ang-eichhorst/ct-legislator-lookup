@@ -110,8 +110,8 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         <div className="bg-white">
           <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
-            <MapPin className="w-8 h-8 text-gray-900" />
-            <h2 className="text-4xl text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+            
+            <h2 className="text-4xl text-gray-900" style={{ fontFamily: '"EB Garamond", garamond, georgia, "Times New Roman", serif' }}>
               Lawmaker Look-up
             </h2>
           </div>
@@ -180,7 +180,7 @@ export default function Home() {
                           {imageUrl && (
                             <a 
                               href={leg.custom?.profile_link || '#'}
-                              target="_blank"
+                              target="_parent"
                               rel="noopener noreferrer"
                               className={leg.custom?.profile_link ? 'cursor-pointer' : 'pointer-events-none'}
                             >
@@ -196,7 +196,7 @@ export default function Home() {
                               {leg.custom?.profile_link ? (
                                 <a 
                                   href={leg.custom.profile_link}
-                                  target="_blank"
+                                  target="_parent"
                                   rel="noopener noreferrer"
                                   className="hover:underline"
                                 >
@@ -263,7 +263,7 @@ export default function Home() {
                                   <ExternalLink className="w-4 h-4 text-gray-700 flex-shrink-0" />
                                   <a
                                     href={leg.contact.url}
-                                    target="_blank"
+                                    target="_parent"
                                     rel="noopener noreferrer"
                                     className="hover:underline text-sm"
                                   >
@@ -277,7 +277,7 @@ export default function Home() {
                                   <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#B32025' }} />
                                   <a
                                     href={leg.custom.profile_link}
-                                    target="_blank"
+                                    target="_parent"
                                     rel="noopener noreferrer"
                                     className="hover:underline font-bold text-sm"
                                     style={{ color: '#B32025' }}
