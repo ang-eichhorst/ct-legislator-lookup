@@ -108,7 +108,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white p-8">
+        <div className="bg-white">
           <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
             <MapPin className="w-8 h-8 text-gray-900" />
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
