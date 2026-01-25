@@ -106,14 +106,14 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white p-6">
+    <div className="min-h-screen bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white p-8">
           <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
             <MapPin className="w-8 h-8 text-gray-900" />
-            <h1 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
-              Find Your Lawmakers
-            </h1>
+            <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+              Find My Legislators
+            </h2>
           </div>
 
           <div className="mb-8">
@@ -136,7 +136,7 @@ export default function Home() {
               </button>
             </div>
             <p className="mt-2 text-sm text-gray-600">
-              Example: 210 Capitol Avenue, Hartford, CT 06106
+              Example: 1049 Asylum Avenue, Hartford, CT 06105
             </p>
           </div>
 
@@ -316,7 +316,7 @@ export default function Home() {
           )}
         </div>
 
-        
+       
       </div>
     </div>
   );
