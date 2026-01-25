@@ -48,6 +48,21 @@ export default function Home() {
   const [error, setError] = useState('');
   const [matchedAddress, setMatchedAddress] = useState('');
 
+  // Initialize Pym.js for iframe embedding
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://pym.nprapps.org/pym.v1.min.js';
+    script.async = true;
+    script.onload = () => {
+      // @ts-ignore
+      if (window.pym) {
+        // @ts-ignore
+        new window.pym.Child({ polling: 500 });
+      }
+    };
+    document.head.appendChild(script);
+  }, []);
+
   const lookupLegislators = async (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
     
@@ -97,7 +112,7 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-6 pb-6 border-b-2 border-gray-900">
             <MapPin className="w-8 h-8 text-gray-900" />
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
-              Find My Legislators
+              Find My Legislators 
             </h2>
           </div>
 
