@@ -163,105 +163,117 @@ export default function Home() {
                       <div className="mb-4">
                         <div className="flex gap-4">
                           {imageUrl && (
-                            <img
-                              src={imageUrl}
-                              alt={fullName}
-                              className="w-[150px] h-[150px] object-cover flex-shrink-0"
-                            />
+                            <a 
+                              href={leg.custom?.profile_link || '#'}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={leg.custom?.profile_link ? 'cursor-pointer' : 'pointer-events-none'}
+                            >
+                              <img
+                                src={imageUrl}
+                                alt={fullName}
+                                className="w-[150px] h-[150px] object-cover flex-shrink-0"
+                              />
+                            </a>
                           )}
                           <div className="flex-1">
-                            <div className="flex items-start justify-between mb-2">
-                              <div className="flex-1">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+                            <div className="mb-3">
+                              {leg.custom?.profile_link ? (
+                                <a 
+                                  href={leg.custom.profile_link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:underline"
+                                >
+                                  <h3 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+                                    {fullName}
+                                  </h3>
+                                </a>
+                              ) : (
+                                <h3 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
                                   {fullName}
                                 </h3>
-                                <p className="text-gray-700 font-medium">
-                                  {party} • State {chamber}
+                              )}
+                              <p className="text-gray-700 font-medium">
+                                {party}
+                              </p>
+                              {leg.district?.district_number && chamber && (
+                                <p className="text-sm text-gray-600 mt-1">
+                                  Connecticut State {chamber} District {leg.district.district_number}
                                 </p>
-                                {leg.district?.name && (
-                                  <p className="text-sm text-gray-600 mt-1">
-                                    {leg.district.name}
-                                  </p>
-                                )}
-                              </div>
-                              <div className="flex flex-col items-end gap-2">
-                                {leg.district?.district_number && (
-                                  <span className="inline-block px-3 py-1 bg-gray-900 text-white text-sm font-bold">
-                                    District {leg.district.district_number}
-                                  </span>
-                                )}
-                              </div>
+                              )}
+                            </div>
+
+                            <div className="space-y-2">
+                              {leg.contact?.email && (
+                                <div className="flex items-center gap-2 text-gray-700">
+                                  <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
+                                  <a
+                                    href={`mailto:${leg.contact.email}`}
+                                    className="hover:underline break-all text-sm"
+                                  >
+                                    {leg.contact.email}
+                                  </a>
+                                </div>
+                              )}
+
+                              {leg.contact?.phone && (
+                                <div className="flex items-center gap-2 text-gray-700">
+                                  <Phone className="w-4 h-4 text-gray-700 flex-shrink-0" />
+                                  <a
+                                    href={`tel:${leg.contact.phone}`}
+                                    className="hover:underline text-sm"
+                                  >
+                                    {leg.contact.phone}
+                                  </a>
+                                </div>
+                              )}
+
+                              {leg.contact?.contact_form && (
+                                <div className="flex items-center gap-2 text-gray-700">
+                                  <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
+                                  <a
+                                    href={leg.contact.contact_form}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline text-sm"
+                                  >
+                                    Contact Form
+                                  </a>
+                                </div>
+                              )}
+
+                              {!leg.custom?.profile_link && leg.contact?.url && (
+                                <div className="flex items-center gap-2 text-gray-700">
+                                  <ExternalLink className="w-4 h-4 text-gray-700 flex-shrink-0" />
+                                  <a
+                                    href={leg.contact.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline text-sm"
+                                  >
+                                    Official Website
+                                  </a>
+                                </div>
+                              )}
+
+                              {leg.custom?.profile_link && (
+                                <div className="flex items-center gap-2" style={{ color: '#B32025' }}>
+                                  <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#B32025' }} />
+                                  <a
+                                    href={leg.custom.profile_link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline font-bold text-sm"
+                                    style={{ color: '#B32025' }}
+                                  >
+                                    View CT Mirror Profile
+                                  </a>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        {leg.custom?.profile_link && (
-                          <div className="flex items-center gap-2 text-gray-900">
-                            <ExternalLink className="w-4 h-4 text-gray-900 flex-shrink-0" />
-                            <a
-                              href={leg.custom.profile_link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline font-bold"
-                            >
-                              View Profile
-                            </a>
-                          </div>
-                        )}
-
-                        {leg.contact?.email && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
-                            <a
-                              href={`mailto:${leg.contact.email}`}
-                              className="hover:underline break-all text-sm"
-                            >
-                              {leg.contact.email}
-                            </a>
-                          </div>
-                        )}
-
-                        {leg.contact?.contact_form && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <Mail className="w-4 h-4 text-gray-700 flex-shrink-0" />
-                            <a
-                              href={leg.contact.contact_form}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline text-sm"
-                            >
-                              Contact Form
-                            </a>
-                          </div>
-                        )}
-
-                        {leg.contact?.phone && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <Phone className="w-4 h-4 text-gray-700 flex-shrink-0" />
-                            <a
-                              href={`tel:${leg.contact.phone}`}
-                              className="hover:underline text-sm"
-                            >
-                              {leg.contact.phone}
-                            </a>
-                          </div>
-                        )}
-
-                        {leg.contact?.url && !leg.custom?.profile_link && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <ExternalLink className="w-4 h-4 text-gray-700 flex-shrink-0" />
-                            <a
-                              href={leg.contact.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline text-sm"
-                            >
-                              Official Website
-                            </a>
-                          </div>
-                        )}
                       </div>
 
                       {leg.contact?.address && (
@@ -289,8 +301,8 @@ export default function Home() {
           )}
         </div>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>Powered by Geocodio API</p>
+        <div className="mt-6 text-center text-sm text-gray-600 border-t-2 border-gray-900 pt-6">
+          <p style={{ fontFamily: 'Georgia, serif' }}>Powered by Geocodio API</p>
         </div>
       </div>
     </div>
