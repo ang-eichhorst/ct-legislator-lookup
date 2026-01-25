@@ -143,7 +143,7 @@ export default function Home() {
           {allLegislators.length > 0 && (
             <div className="space-y-4">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Georgia, serif' }}>
-                Your Legislators ({allLegislators.length})
+                Your Legislators
               </h2>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -185,12 +185,12 @@ export default function Home() {
                                   rel="noopener noreferrer"
                                   className="hover:underline"
                                 >
-                                  <h3 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+                                  <h3 className="text-2xl font-bold" style={{ fontFamily: 'Georgia, serif', color: '#B32025' }}>
                                     {fullName}
                                   </h3>
                                 </a>
                               ) : (
-                                <h3 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+                                <h3 className="text-2xl font-bold" style={{ fontFamily: 'Georgia, serif', color: '#B32025' }}>
                                   {fullName}
                                 </h3>
                               )}
