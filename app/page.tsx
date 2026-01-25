@@ -121,7 +121,7 @@ export default function Home() {
               </button>
             </div>
             <p className="mt-2 text-sm text-gray-600">
-              Example: 1049 Asylum Avenue, Hartford, CT 06105
+              Example: 210 Capitol Avenue, Hartford, CT 06106
             </p>
           </div>
 
@@ -301,9 +301,7 @@ export default function Home() {
           )}
         </div>
 
-        <div className="mt-6 text-center text-sm text-gray-600 border-t-2 border-gray-900 pt-6">
-          <p style={{ fontFamily: 'Georgia, serif' }}>Powered by Geocodio API</p>
-        </div>
+        
       </div>
     </div>
   );
