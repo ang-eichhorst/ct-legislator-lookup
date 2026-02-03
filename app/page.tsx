@@ -116,7 +116,7 @@ export default function Home() {
             </h2>
 
           </div>
-                      <p style={{ margin-bottom: "10px;" }}>Don't know your House or Senate district number or who your lawmakers are? Use our tool to look up your state senator and representative by typing in your full address, including the zip code.
+                      <p className="mt-2">Don't know your House or Senate district number or who your lawmakers are? Use our tool to look up your state senator and representative by typing in your full address, including the zip code.
 </p>
 
           <div className="mb-8">
