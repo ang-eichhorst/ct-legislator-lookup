@@ -114,6 +114,8 @@ export default function Home() {
             <h2 className="text-4xl text-gray-900" style={{ fontFamily: '"EB Garamond", garamond, georgia, "Times New Roman", serif' }}>
               Lawmaker Look-up
             </h2>
+            <p>Don't know your House or Senate district number or who your lawmakers are? Use our tool to look up your state senator and representative by typing in your full address, including the zip code.
+</p>
           </div>
 
           <div className="mb-8">
