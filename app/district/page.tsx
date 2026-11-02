@@ -117,10 +117,10 @@ export default function FindMyDistrict() {
         {(senateDistrict || houseDistrict) && (
           <div className="border-2 border-gray-200 p-6 space-y-2 text-2xl">
             {senateDistrict && (
-              <p><span className="font-bold">Senate district:</span> {senateDistrict}</p>
+              <p><span className="font-bold">State Senate District:</span> {senateDistrict}</p>
             )}
             {houseDistrict && (
-              <p><span className="font-bold">House district:</span> {houseDistrict}</p>
+              <p><span className="font-bold">State House District:</span> {houseDistrict}</p>
             )}
           </div>
         )}
